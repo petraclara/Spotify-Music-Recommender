@@ -1,3 +1,4 @@
+
 import pickle
 import streamlit as st
 import pandas as pd
@@ -8,7 +9,10 @@ music= pickle.load(open('music.pkl', 'rb'))
 
 # Streamlit Interface
 st.title("Spotify Song Recommender")
-input_song_name = st.selectbox("Type song", music['Track Name'])
+options = ["Select a song..."] + list(music['Track Name'])
+input_song_name = st.selectbox("Type song", options)
+
+#input_song_name = st.selectbox("Type song", placeholder="song", music['Track Name'])
 num_recommendations = st.number_input("Number of songs",min_value=0,max_value=20,value=5)
 if st.button("Get Recommendations"):
         
